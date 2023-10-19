@@ -39,8 +39,8 @@ export async function POST(req: Request) {
               quantity
             }
           ],
-          mode: 'subscription',
-          allow_promotion_codes: true,
+          mode: 'setup', // Was subscription
+          allow_promotion_codes: false,
           subscription_data: {
             trial_from_plan: true,
             metadata
