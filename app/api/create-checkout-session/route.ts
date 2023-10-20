@@ -27,7 +27,7 @@ export async function POST(req: Request) {
       let session;
       if (price.type === 'recurring') {
         session = await stripe.checkout.sessions.create({
-          payment_method_types: ['card','paypal'],
+          payment_method_types: ['card','paypal','bacs_debit'],
           billing_address_collection: 'required',
           customer,
           customer_update: {
@@ -39,7 +39,7 @@ export async function POST(req: Request) {
               quantity
             }
           ],
-          mode: 'subscriptions', // Was subscription
+          mode: 'subscription', // Was subscription
           allow_promotion_codes: false,
           subscription_data: {
             trial_from_plan: true,
